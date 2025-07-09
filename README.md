@@ -2,6 +2,29 @@
 
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Repo-blue?logo=github)](https://github.com/MILANydv/inventory_management.git)
 
+---
+
+> **Educational Use Only**
+>
+> This project is provided for educational purposes for students of **PCPS, Patan College For Professional Studies**.
+>
+> - **Address:** 162, Patan 44700 Kupondole Rd, Lalitpur 44700
+> - **Website:** [patancollege.edu.np](https://patancollege.edu.np)
+>
+> Please use this repository as a learning resource. Do not use in production environments.
+
+---
+
+## Assignment Instructions for Students
+
+1. **Fork this repository** to your own GitHub account using the GitHub web interface.
+2. **Clone your forked repository** to your local machine.
+3. **Complete the remaining routes** or any additional features as assigned by your instructor.
+4. **Commit and push your changes** to your forked repository.
+5. **Submit your repository link** as per your instructor's instructions.
+
+---
+
 ## Overview
 
 This project is a robust, professional Django-based inventory management system. It follows best practices for code quality, DRY principles, and is designed for performance and maintainability. The authentication system uses JWT (JSON Web Tokens) for secure, scalable API access, and the codebase is structured for easy extension and theming.
@@ -25,9 +48,25 @@ cd inventory_management
 
 ### 2. Create and Activate Virtual Environment
 
+#### On Linux/macOS:
+
 ```bash
 python3 -m venv venv
 source venv/bin/activate
+```
+
+#### On Windows (CMD):
+
+```cmd
+python -m venv venv
+venv\Scripts\activate
+```
+
+#### On Windows (PowerShell):
+
+```powershell
+python -m venv venv
+.\venv\Scripts\Activate.ps1
 ```
 
 ### 3. Install Dependencies
