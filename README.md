@@ -198,6 +198,4 @@ Below is a summary of all available API routes. All inventory endpoints require 
 
 A ready-to-use Postman collection (`postman_collection.json`) is included for quick API testing. It covers all major endpoints and automatically handles JWT token storage after login.
 
-## License
 
-MIT (or your preferred license)
