@@ -132,3 +132,91 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Inventory Management Admin",
+    "site_header": "Inventory Management Dashboard",
+    "site_brand": "Inventory Management",
+    "welcome_sign": "Welcome to the Inventory Management Admin Portal",
+    "copyright": "PCPS, Patan College For Professional Studies",
+    "order_with_respect_to": ["inventory", "accounts"],
+    "icons": {
+        "inventory.category": "fas fa-tags",
+        "inventory.product": "fas fa-box",
+        "inventory.supplier": "fas fa-truck",
+        "inventory.customer": "fas fa-user",
+        "inventory.order": "fas fa-shopping-cart",
+        "inventory.orderitem": "fas fa-list",
+    },
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "hide_apps": [],
+    "hide_models": [],
+    "custom_links": {
+        "inventory": [
+            {
+                "name": "API Docs (Swagger)",
+                "url": "/swagger/",
+                "icon": "fas fa-book",
+                "permissions": ["auth.view_user"]
+            },
+            {
+                "name": "API Docs (Redoc)",
+                "url": "/redoc/",
+                "icon": "fas fa-book-open",
+                "permissions": ["auth.view_user"]
+            },
+        ]
+    },
+    "related_modal_active": True,
+    "site_logo": None,
+    "login_logo": None,
+    "site_logo_classes": "img-circle",
+    "site_icon": None,
+    "topmenu_links": [
+        {"name": "Home", "url": "/admin/", "permissions": ["auth.view_user"]},
+    ],
+    "custom_dashboard": [
+        {
+            "app": "inventory",
+            "model": "Product",
+            "title": "Total Products",
+            "icon": "fas fa-box",
+            "description": "Total number of products in inventory.",
+            "color": "primary"
+        },
+        {
+            "app": "inventory",
+            "model": "Category",
+            "title": "Total Categories",
+            "icon": "fas fa-tags",
+            "description": "Total number of product categories.",
+            "color": "info"
+        },
+        {
+            "app": "inventory",
+            "model": "Supplier",
+            "title": "Total Suppliers",
+            "icon": "fas fa-truck",
+            "description": "Total number of suppliers.",
+            "color": "success"
+        },
+        {
+            "app": "inventory",
+            "model": "Customer",
+            "title": "Total Customers",
+            "icon": "fas fa-user",
+            "description": "Total number of customers.",
+            "color": "warning"
+        },
+        {
+            "app": "inventory",
+            "model": "Order",
+            "title": "Total Orders",
+            "icon": "fas fa-shopping-cart",
+            "description": "Total number of orders (sales & purchases).",
+            "color": "danger"
+        },
+    ],
+    "custom_welcome": "<h3>Welcome to the Inventory Management Dashboard</h3><p>Use the sidebar to manage products, categories, suppliers, customers, and orders. Use the analytics cards below for a quick overview of your inventory system.</p>",
+}
