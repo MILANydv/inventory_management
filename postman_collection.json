@@ -1,0 +1,221 @@
+{
+  "info": {
+    "_postman_id": "inventory-management-collection",
+    "name": "Inventory Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Postman collection for testing Inventory Management System with JWT auth."
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"testuser\",\n  \"email\": \"testuser@example.com\",\n  \"password\": \"testpass123\",\n  \"password2\": \"testpass123\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/auth/register/",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "auth", "register", ""]
+        }
+      }
+    },
+    {
+      "name": "Login (JWT Token)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"testpass123\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/auth/login/",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "auth", "login", ""]
+        },
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "exec": [
+                "// Parse the response body",
+                "var data = pm.response.json(); // Use 'var' to avoid redeclaration errors",
+                "",
+                "// Set the access token as an environment variable",
+                "if (data.access) {",
+                "    pm.environment.set(\"access_token\", data.access);",
+                "    pm.environment.set(\"refresh_token\", data.refresh);",
+                "    console.log(\"Access token set in environment.\");",
+                "} else {",
+                "    console.warn(\"No access token found in response.\");",
+                "}"
+              ],
+              "type": "text/javascript"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Get Categories",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/inventory/categories/",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "inventory", "categories", ""]
+        }
+      }
+    },
+    {
+      "name": "Create Category",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Electronics\",\n  \"description\": \"Electronic items\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/inventory/categories/",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "inventory", "categories", ""]
+        }
+      }
+    },
+    {
+      "name": "Get Products",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/inventory/products/",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "inventory", "products", ""]
+        }
+      }
+    },
+    {
+      "name": "Create Product",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Laptop\",\n  \"category\": 1,\n  \"supplier\": 1,\n  \"price\": 1200.00,\n  \"stock\": 10,\n  \"description\": \"High-end laptop\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/inventory/products/",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "inventory", "products", ""]
+        }
+      }
+    },
+    {
+      "name": "Get Orders",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/inventory/orders/",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "inventory", "orders", ""]
+        }
+      }
+    },
+    {
+      "name": "Create Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"order_type\": \"sale\",\n  \"customer\": 1,\n  \"total\": 1200.00\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/inventory/orders/",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "inventory", "orders", ""]
+        }
+      }
+    },
+    {
+      "name": "Get Suppliers",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/inventory/suppliers/",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "inventory", "suppliers", ""]
+        }
+      }
+    },
+    {
+      "name": "Create Supplier",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"ABC Supplies\",\n  \"contact_name\": \"John Doe\",\n  \"email\": \"supplier@example.com\",\n  \"phone\": \"1234567890\",\n  \"address\": \"123 Main St, City\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/inventory/suppliers/",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "inventory", "suppliers", ""]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "access_token",
+      "value": ""
+    }
+  ]
+}

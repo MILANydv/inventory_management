@@ -48,6 +48,7 @@ django-classy-tags==4.0.0
 django-cms==3.11.3
 django-cors-headers==4.2.0
 django-filer==2.2.5
+django-filter==25.1
 django-formtools==2.4.1
 django-jazzmin==3.0.1
 django-js-asset==2.1.0
@@ -60,7 +61,9 @@ django-treebeard==4.7
 djangocms-admin-style==3.2.4
 djangocms-page-meta==1.2.0
 djangorestframework==3.14.0
+djangorestframework_simplejwt==5.5.0
 dpd-components==0.1.0
+drf-yasg==1.21.10
 duplicity==0.8.21
 easy-thumbnails==2.8.5
 entrypoints==0.4
@@ -86,6 +89,7 @@ h5py==3.7.0
 httplib2==0.22.0
 idna==3.4
 importlib-metadata==4.6.4
+inflection==0.5.1
 ipykernel==6.13.0
 ipython==8.3.0
 ipython-genutils==0.2.0

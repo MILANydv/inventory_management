@@ -6,11 +6,11 @@ This project is a robust, professional Django-based inventory management system.
 
 ## Features
 
-- **User Registration**: Secure registration endpoint with password confirmation and validation.
-- **JWT Authentication**: Modern login endpoint using `djangorestframework-simplejwt` for stateless, scalable authentication.
-- **API-First Design**: All endpoints are RESTful and ready for frontend or mobile integration.
-- **Professional Code Quality**: DRY, robust, and clean code, following industry standards.
-- **Responsive & Theme-Compatible**: (For frontend, if/when added) All widgets and screens should be fully responsive and theme-compatible, inspired by Airbnb's design system.
+- **User registration & JWT login**
+- **CRUD for Category, Product, Supplier, Customer, Order**
+- **DRY, robust, and professional code**
+- **API-first, ready for responsive frontend**
+- **Easily extendable for advanced features (filtering, search, RBAC, etc.)**
 
 ## Setup Instructions
 
@@ -95,6 +95,37 @@ The server will start at [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
   }
   ```
 - **Response:** `200 OK` with new `access` token
+
+### Inventory Management
+
+All endpoints require JWT authentication (include `Authorization: Bearer <access_token>` header).
+
+- **Categories:** `/api/inventory/categories/`
+- **Suppliers:** `/api/inventory/suppliers/`
+- **Customers:** `/api/inventory/customers/`
+- **Products:** `/api/inventory/products/`
+- **Orders:** `/api/inventory/orders/`
+
+Supports full CRUD (create, list, retrieve, update, delete) via standard REST methods (POST, GET, PUT/PATCH, DELETE).
+
+#### Example: Create a Product
+
+POST `/api/inventory/products/`
+
+```json
+{
+  "name": "Sample Product",
+  "category": 1,
+  "supplier": 1,
+  "price": 100.0,
+  "stock": 50,
+  "description": "A sample product."
+}
+```
+
+#### Example: List Orders
+
+GET `/api/inventory/orders/`
 
 ## Project Structure
 
